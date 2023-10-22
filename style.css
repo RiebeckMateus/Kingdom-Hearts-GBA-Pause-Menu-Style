@@ -1,0 +1,366 @@
+:root {
+    --window-width: 240px;
+    --window-height: 160px;
+    --hf-size: 15%;
+    --mid-size: calc(100% - var(--hf-size));
+    --top-box-width: 80px;
+    --outline-size: 1.5px;
+    --button-border: black;
+    --button-border-hover: orangered;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Code+Latin&family=Pixelify+Sans&display=swap');
+
+body{
+    
+}
+
+#main-container {
+    width: var(--window-width);
+    height: var(--window-height);
+    display: flex;
+    flex-direction: column;
+    background-image: url(bg.png);
+    /* z-index: -10; */
+}
+
+.head {
+    /* background-color: aqua; */
+    height: var(--hf-size);
+    box-shadow: inset 0 -1px rgb(3, 8, 238),inset 0 -2px rgb(2, 4, 119),inset 0 -3px rgb(1, 2, 59.5);
+    background-image: linear-gradient(black,navy);
+}
+
+.mid{
+    /* background-color: brown; */
+    height: var(--mid-size);
+    display: flex;
+    position: relative;
+    background-color: rgb(30, 30, 30,0.7);
+}
+
+.foot{
+    /* background-color: aqua; */
+    height: var(--hf-size);
+    box-shadow: inset 0 1px rgb(3, 8, 238),inset 0 2px rgb(2, 4, 119),inset 0 3px rgb(1, 2, 59.5);
+    background-image: linear-gradient(navy,black);
+}
+
+.menu-items-container{
+    height: 105px;
+    width: 50px;
+    /* background-color: blue; */
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.b-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+    font-size: 7px;
+    height: 12px;
+    width: 50px;
+    border: solid 1px var(--button-border);
+    border-left: none;
+    border-right: none;
+    background-image: linear-gradient(
+        rgb(0,0,27),
+        rgb(12,23,186)
+    );
+    /* clip-path: polygon(90% 0, 100% 50%, 90% 100%, 10% 100%, 0% 50%, 10% 0); */
+    color: rgb(200, 200, 200);
+    transition: transform 0.1s;
+    z-index: 1;
+}
+
+.b-item::before{
+    content: "";
+    left: 0px;
+    top: 6px;
+    background-image: linear-gradient(
+        135deg,
+        rgb(0,0,27),
+        rgb(12,23,186)
+    );
+    box-shadow:
+        inset 1px 0 0 0 var(--button-border),
+        inset 0 -1px 0 0 var(--button-border);
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    transform: translate(-50%,-50%) rotate(45deg);
+    z-index: -1;
+}
+
+.b-item:hover::before{
+    background-image: linear-gradient(
+        to bottom right,
+        rgb(19,0,0),
+        rgb(248, 26, 26)
+    );
+    box-shadow:
+        inset 1px 0 0 0 var(--button-border-hover),
+        inset 0 -1px 0 0 var(--button-border-hover);
+}
+
+.b-item::after{
+    content: "";
+    left: 50px;
+    top: 6px;
+    background-image: linear-gradient(
+        135deg,
+        rgb(0,0,27),
+        rgb(12,23,186)
+    );
+    box-shadow:
+        inset -1px 0 0 0 var(--button-border),
+        inset 0 1px 0 0 var(--button-border);
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    transform: translate(-50%,-50%) rotate(45deg);
+    z-index: -1;
+}
+
+.b-item:hover::after{
+    background-image: linear-gradient(
+        to bottom right,
+        rgb(19,0,0),
+        rgb(248, 26, 26)
+    );
+    box-shadow:
+        inset -1px 0 0 0 var(--button-border-hover),
+        inset 0 1px 0 0 var(--button-border-hover);
+}
+
+.b-item:hover{
+    transform: translate(5px);
+    background-image: linear-gradient(
+        rgb(19,0,0),
+        rgb(248, 26, 26)
+    );
+    border: solid 1px var(--button-border-hover);
+    border-left: none;
+    border-right: none;
+    color: rgb(255, 255, 255);
+}
+
+.right-container{
+    position: relative;
+    left: 110px;
+    top: 5px;
+    height: 100px;
+    width: 120px;
+    border-radius: 5px;
+    box-shadow: inset 0 0 0 1px rgb(3, 8, 238), inset 0 0 0 2px rgb(2, 4, 119), inset 0 0 0 3px rgb(1, 1, 59.5);
+    display: flex;
+    flex-direction: column;
+}
+
+.top-box{
+    transform: translate(calc(var(--window-width) - 110px - var(--top-box-width)),-20px);
+    width: var(--top-box-width);
+    height: 40px;
+    background-color: rgb(115, 162, 172);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    --borderColor: rgb(71,107,97);
+    box-shadow:
+        inset var(--outline-size) 0 0 0 var(--borderColor),
+        inset 0px calc(var(--outline-size)*-1) 0 0 var(--borderColor),
+        inset 0px var(--outline-size) 0 0 var(--borderColor),
+        0 1px black;
+}
+
+.bottom-box{
+    --bottom-box-width: 120px;
+    transform: translate(calc(var(--window-width) - 110px - var(--bottom-box-width)),33px);
+    width: var(--bottom-box-width);
+    height: 20px;
+    background-color: rgb(90, 130, 132);
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    --borderColor: rgb(72, 106, 105);
+    box-shadow:
+        inset var(--outline-size) 0 0 0 var(--borderColor),
+        inset 0px calc(var(--outline-size)*-1) 0 0 var(--borderColor),
+        inset 0px var(--outline-size) 0 0 rgb(115,155,157),
+        0 1px black;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.mid-box{
+    transform: translate(-20px,31px);
+    --mid-box-width:80px;
+    --mid-box-height:32px;
+    width: var(--mid-box-width);
+    height: var(--mid-box-height);
+    background-color: rgb(115, 162, 172);
+    border-radius: 5px;
+    box-shadow:
+        1px 1px black,
+        inset 0 0 0 var(--outline-size) rgb(72, 106, 105);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.top-box-font{
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.level{
+    position: absolute;
+    left: 4px;
+    top: 2px;
+    font-size: 8px;
+    z-index: 1;
+    color: aliceblue;
+}
+
+.level::after{
+    position: absolute;
+    content: "";
+    border-radius: 5px;
+    width: 27px;
+    height: 3px;
+    left: 0px;
+    top: 5px;
+    background-color: rgb(27, 91, 95);
+    z-index: -1;
+}
+
+.levelPower{
+    color: aliceblue;
+    position: absolute;
+    right: 6.5px;
+    top: 2px;
+    font-size: 10px;
+}
+
+.hp{
+    position: absolute;
+    left: 4px;
+    top: 12px;
+    font-size: 8px;
+    z-index: 1;
+    color: aliceblue;
+}
+.hp::after{
+    position: absolute;
+    content: "";
+    border-radius: 5px;
+    width: 12px;
+    height: 3px;
+    left: 0px;
+    top: 5px;
+    background-color: rgb(27, 91, 95);
+    z-index: -1;
+}
+
+.hpPower{
+    color: aliceblue;
+    position: absolute;
+    right: 5px;
+    top: 12px;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.mooglepoints{
+    position: absolute;
+    left: 4px;
+    top: 23px;
+    font-size: 7px;
+    z-index: 1;
+    color: aliceblue;
+}
+.mooglepoints::after{
+    position: absolute;
+    content: "";
+    border-radius: 5px;
+    width: 62px;
+    height: 3px;
+    left: 0px;
+    top: 5px;
+    background-color: rgb(27, 91, 95);
+    z-index: -1;
+}
+
+.moogle{
+    color: aliceblue;
+    position: absolute;
+    right: 5px;
+    top: 29px;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.friends{
+    position: absolute;
+    font-size: 6px;
+    left: 6px;
+    top: 2px;
+    color: aliceblue;
+}
+
+.friends::after{
+    position: absolute;
+    content: "";
+    border-radius: 5px;
+    background-color: rgb(27, 91, 95);
+    width: 32px;
+    height: 3px;
+    left: -2px;
+    top: 3px;
+    z-index: -1;
+}
+
+.friend-card{
+    margin-top: 6px;
+    height: 19px;
+    width: 14px;
+    /* background-color: coral; */
+}
+
+#sora-card{
+    background-size: contain;    
+    background-image: url(soraCard.png);
+}
+
+#donald-card{
+    background-size: contain;    
+    background-image: url(donaldCard.png);
+}
+
+#goofy-card{
+    background-size: contain;
+    background-image: url(goofyCard.png);
+}
+
+.description{
+    color: aliceblue;
+    margin-left: 5px;
+    font-size: 10px;
+}
+
+.sora-sprite{
+    width: 28px;
+    height: 52px;
+    position: absolute;
+    left: 45px;
+    top: 20px;
+    background-image: url(soraSprite.png);
+}
